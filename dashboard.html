@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeniorCare - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <header class="header-main">
+        <div class="container flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl text-white">SeniorCare</h1>
+                <p id="welcomeMsg" class="text-xl text-gray-light" style="color: #d1d5db;">Hello, User</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div id="readOnlyBadge" class="hidden bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold text-lg">
+                    Read-Only Mode
+                </div>
+                <button id="logoutBtn" class="btn btn-outline">
+                    <i data-lucide="log-out" style="margin-right: 0.5rem;"></i> Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container space-y-6">
+        
+        <div class="card">
+            <div class="card-header bg-red-500 text-white">
+                <h2 class="text-2xl flex items-center gap-3">
+                    <i data-lucide="heart"></i> Latest Vitals
+                </h2>
+            </div>
+            <div class="card-content">
+                <div id="vitalsContainer" class="grid-4">
+                    </div>
+                <div id="noVitalsMsg" class="text-2xl text-gray-light text-center py-8 hidden">
+                    No vitals recorded yet
+                </div>
+                <button onclick="window.location.href='vitals.html'" class="btn btn-red" style="margin-top: 1rem;">
+                    <span id="vitalsBtnText">View Vitals History</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-blue-500 text-white">
+                <h2 class="text-2xl flex items-center gap-3">
+                    <i data-lucide="footprints"></i> Today's Steps
+                </h2>
+            </div>
+            <div class="card-content">
+                <div class="stat-box bg-blue text-center">
+                    <p id="stepCount" class="text-3xl font-bold" style="font-size: 3.75rem;">0</p>
+                    <p class="text-2xl text-gray mt-2">steps today</p>
+                </div>
+                <button onclick="window.location.href='steps.html'" class="btn btn-blue" style="margin-top: 1rem;">
+                    <span id="stepsBtnText">View Steps History</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-green-500 text-white">
+                <h2 class="text-2xl flex items-center gap-3">
+                    <i data-lucide="pill"></i> Next Medication
+                </h2>
+            </div>
+            <div class="card-content">
+                <div id="medContainer"></div>
+                <div id="noMedsMsg" class="text-2xl text-gray-light text-center py-8 hidden">
+                    No medications scheduled
+                </div>
+                <button onclick="window.location.href='medications.html'" class="btn btn-green" style="margin-top: 1rem;">
+                    <span id="medsBtnText">View Medications</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-purple-500 text-white">
+                <h2 class="text-2xl flex items-center gap-3">
+                    <i data-lucide="file-text"></i> Health Reports
+                </h2>
+            </div>
+            <div class="card-content">
+                <button onclick="window.location.href='reports.html'" class="btn btn-purple">
+                    View Reports
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="utils.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

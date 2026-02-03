@@ -80,3 +80,48 @@ stopBtn.addEventListener('click', () => {
     document.getElementById('trackingActive').classList.add('hidden');
     document.getElementById('trackingIdle').classList.remove('hidden');
 });
+// Add these variables to your existing steps.js
+const circle = document.getElementById('progressCircle');
+const radius = circle.r.baseVal.value;
+const circumference = radius * 2 * Math.PI;
+
+circle.style.strokeDasharray = `${circumference} ${circumference}`;
+circle.style.strokeDashoffset = circumference;
+
+function updateProgress(current, goal) {
+    const percent = Math.min((current / goal) * 100, 100);
+    const offset = circumference - (percent / 100 * circumference);
+    circle.style.strokeDashoffset = offset;
+    
+    // Change color to green if goal met
+    circle.style.stroke = percent >= 100 ? "#22c55e" : "#3b82f6";
+}
+
+// Goal Management
+let dailyGoal = localStorage.getItem('stepGoal') || 5000;
+document.getElementById('goalDisplay').textContent = dailyGoal;
+document.getElementById('goalInput').value = dailyGoal;
+
+document.getElementById('updateGoalBtn').addEventListener('click', () => {
+    dailyGoal = document.getElementById('goalInput').value;
+    localStorage.setItem('stepGoal', dailyGoal);
+    document.getElementById('goalDisplay').textContent = dailyGoal;
+    loadData(); // Refresh UI
+});
+
+// Update your existing loadData function to include updateProgress:
+function loadData() {
+    const session = getSession();
+    const data = getSeniorData(session.seniorId);
+    
+    if (data && data.steps) {
+        const todayStr = new Date().toISOString().split('T')[0];
+        const todayTotal = data.steps
+            .filter(s => s.date.startsWith(todayStr))
+            .reduce((sum, s) => sum + s.steps, 0);
+
+        document.getElementById('totalStepsDisplay').textContent = todayTotal.toLocaleString();
+        updateProgress(todayTotal, dailyGoal);
+        renderHistory(data.steps);
+    }
+}

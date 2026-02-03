@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medications</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen bg-gray-50 pb-24">
+
+    <header class="bg-black text-white p-6">
+        <div class="max-w-4xl mx-auto flex items-center gap-4">
+            <button id="backBtn" class="h-14 px-4 border-2 border-white text-white hover:bg-white hover:text-black rounded">
+                ←
+            </button>
+            <h1 class="text-3xl font-bold">Medications</h1>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 space-y-6">
+        <section id="addMedicationSection" class="hidden border-4 border-black bg-white rounded-lg overflow-hidden">
+            <div class="bg-green-500 text-white p-6">
+                <h2 class="text-2xl font-bold flex items-center gap-3">🔔 Add Medication Reminder</h2>
+            </div>
+            <div class="p-6">
+                <form id="medicationForm" class="space-y-6">
+                    <div class="space-y-2">
+                        <label class="text-xl font-bold text-black">Medicine Name</label>
+                        <input type="text" id="medName" required class="w-full h-16 text-xl border-4 border-black px-4" placeholder="e.g., Lisinopril">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-xl font-bold text-black">Time</label>
+                            <input type="time" id="medTime" required class="w-full h-16 text-xl border-4 border-black px-4">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xl font-bold text-black">Frequency</label>
+                            <select id="medFrequency" class="w-full h-16 text-xl border-4 border-black px-4">
+                                <option value="Every Day">Every Day</option>
+                                <option value="Once">Once</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full h-16 text-xl font-bold bg-green-600 text-white hover:bg-green-700">
+                        Add Medication
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section class="border-4 border-black bg-white rounded-lg overflow-hidden">
+            <div class="bg-gray-800 text-white p-6">
+                <h2 class="text-2xl font-bold">Medication Schedule</h2>
+            </div>
+            <div id="medicationList" class="p-6">
+                <p class="text-2xl text-gray-500 text-center py-8">No medications scheduled</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="medications.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Reports</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen pb-24">
+        <header class="bg-black text-white p-6">
+            <div class="max-w-4xl mx-auto flex items-center gap-4">
+                <button id="backBtn" class="h-14 px-4 border-2 border-white text-white bg-transparent cursor-pointer hover:bg-white hover:text-black">
+                    ←
+                </button>
+                <h1 class="text-3xl font-bold">Health Reports</h1>
+            </div>
+        </header>
+
+        <main class="max-w-4xl mx-auto p-6 space-y-6">
+            <section class="card border-4 border-black p-6 bg-white">
+                <div class="flex items-center gap-4">
+                    <label class="text-xl font-bold text-black">Show data for:</label>
+                    <select id="filterSelect" class="h-14 text-xl border-4 border-black w-48 px-2">
+                        <option value="7">Last 7 days</option>
+                        <option value="30">Last 30 days</option>
+                    </select>
+                </div>
+            </section>
+
+            <div id="summaryContainer"></div>
+
+            <section class="card border-4 border-black bg-white overflow-hidden">
+                <div class="card-header bg-red-500 text-white p-4">
+                    <h2 class="text-2xl font-bold">Vitals History</h2>
+                </div>
+                <div class="p-6" id="vitalsContainer"></div>
+            </section>
+
+            <section class="card border-4 border-black bg-white overflow-hidden">
+                <div class="card-header bg-blue-500 text-white p-4">
+                    <h2 class="text-2xl font-bold">Steps History</h2>
+                </div>
+                <div class="p-6" id="stepsContainer"></div>
+            </section>
+
+            <section class="card border-4 border-black bg-white overflow-hidden">
+                <div class="card-header bg-green-500 text-white p-4">
+                    <h2 class="text-2xl font-bold">Current Medications</h2>
+                </div>
+                <div class="p-6" id="medsContainer"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="reports.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steps Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen bg-gray-50 pb-24">
+
+    <header class="bg-black text-white p-6 mb-6">
+        <div class="max-w-4xl mx-auto flex items-center gap-4">
+            <button id="backBtn" class="h-14 px-4 border-2 border-white text-white hover:bg-white hover:text-black rounded transition-colors">
+                ←
+            </button>
+            <h1 class="text-3xl font-bold">Steps Tracker</h1>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 space-y-8">
+        
+        <section class="neo-border bg-white rounded-xl p-10 flex flex-col items-center">
+            <div class="progress-container relative">
+                <svg class="progress-ring" width="260" height="260">
+                    <circle class="progress-ring__background" stroke="#e2e8f0" stroke-width="16" fill="transparent" r="110" cx="130" cy="130"/>
+                    <circle id="progressCircle" class="progress-ring__circle" stroke="#3b82f6" stroke-width="16" fill="transparent" r="110" cx="130" cy="130"/>
+                </svg>
+                
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <p class="text-sm uppercase font-black text-gray-400 tracking-widest">Today's Steps</p>
+                    <p id="totalStepsDisplay" class="text-7xl font-black text-black">0</p>
+                    <div class="flex items-center gap-1 mt-1">
+                        <span class="text-gray-400 font-bold">Goal:</span>
+                        <span id="goalDisplay" class="text-xl font-bold text-blue-600">5000</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="editControls" class="hidden space-y-6">
+            
+            <div class="neo-border bg-yellow-400 p-6 rounded-xl flex flex-wrap justify-between items-center gap-4">
+                <div>
+                    <h3 class="font-black text-xl">Daily Target</h3>
+                    <p class="text-sm font-bold opacity-80">Adjust your step goal</p>
+                </div>
+                <div class="flex gap-2">
+                    <input type="number" id="goalInput" class="w-28 h-14 border-4 border-black px-4 font-black text-xl rounded-lg">
+                    <button id="updateGoalBtn" class="neo-border neo-button bg-black text-white px-6 py-2 font-bold rounded-lg uppercase">Set</button>
+                </div>
+            </div>
+
+            <section class="neo-border bg-white rounded-xl overflow-hidden">
+                <div class="bg-blue-600 text-white p-4 border-b-4 border-black">
+                    <h2 class="text-xl font-black uppercase tracking-tight">Live Pedometer</h2>
+                </div>
+                <div class="p-6">
+                    <div id="trackingIdle">
+                        <button id="startBtn" class="neo-border neo-button w-full h-20 text-2xl font-black bg-green-500 text-black rounded-xl uppercase">
+                            ▶ Start Tracking
+                        </button>
+                    </div>
+                    <div id="trackingActive" class="hidden text-center space-y-4">
+                        <div class="bg-red-50 border-4 border-red-500 p-4 animate-pulse rounded-xl">
+                            <p class="text-red-600 font-black text-lg uppercase">Recording Motion...</p>
+                            <p id="liveCounter" class="text-5xl font-black text-black">0</p>
+                            <p class="font-bold text-gray-500">steps this session</p>
+                        </div>
+                        <button id="stopBtn" class="neo-border neo-button w-full h-20 text-2xl font-black bg-red-600 text-white rounded-xl uppercase">
+                            ■ Stop & Save
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="neo-border bg-white rounded-xl overflow-hidden">
+                <div class="bg-gray-800 text-white p-4 border-b-4 border-black">
+                    <h2 class="text-xl font-black uppercase tracking-tight">Manual Log</h2>
+                </div>
+                <div class="p-6">
+                    <form id="manualForm" class="flex gap-4 items-end">
+                        <div class="flex-1 space-y-2">
+                            <label class="text-sm font-black uppercase text-gray-500">Number of Steps</label>
+                            <input type="number" id="manualStepsInput" required class="w-full h-14 text-xl border-4 border-black px-4 rounded-lg font-bold">
+                        </div>
+                        <button type="submit" class="neo-border neo-button h-14 px-8 text-xl font-black bg-blue-500 text-black rounded-lg">
+                            + ADD
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <section class="neo-border bg-white rounded-xl overflow-hidden">
+            <div class="bg-gray-200 p-4 border-b-4 border-black">
+                <h2 class="text-xl font-black uppercase tracking-tight text-black">Activity History</h2>
+            </div>
+            <div id="historyContainer" class="p-6">
+                <p class="text-xl text-gray-500 text-center py-8 font-bold italic">No steps recorded yet...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="steps.js"></script>
+</body>
+</html>

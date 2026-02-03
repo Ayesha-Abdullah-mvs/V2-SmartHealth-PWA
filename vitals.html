@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeniorCare - Vitals</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <header class="header-main">
+        <div class="container flex items-center gap-4">
+            <button onclick="window.location.href='dashboard.html'" class="btn btn-outline" style="width: auto;">
+                <i data-lucide="arrow-left"></i>
+            </button>
+            <h1 class="text-3xl text-white">Vitals</h1>
+        </div>
+    </header>
+
+    <main class="container space-y-6">
+        
+        <div id="vitalsFormCard" class="card hidden">
+            <div class="card-header bg-red-500 text-white">
+                <h2 class="text-2xl">Record New Vitals</h2>
+            </div>
+            <div class="card-content">
+                <form id="vitalsForm" class="space-y-6">
+                    <div class="grid-2">
+                        <div class="input-group">
+                            <label class="label">Heart Rate (bpm)</label>
+                            <input type="number" id="heartRate" class="input-field" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="label">Weight (kg)</label>
+                            <input type="number" id="weight" step="0.1" class="input-field" required>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="input-group">
+                            <label class="label">BP Systolic</label>
+                            <input type="number" id="bpSys" class="input-field" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="label">BP Diastolic</label>
+                            <input type="number" id="bpDia" class="input-field" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Sugar Level (mg/dL)</label>
+                        <input type="number" id="sugar" class="input-field" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-red">Save Vitals</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-gray-800 text-white" style="background-color: #1f2937;">
+                <h2 class="text-2xl">Vitals History</h2>
+            </div>
+            <div class="card-content">
+                <div style="overflow-x: auto;">
+                    <table id="vitalsTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>HR</th>
+                                <th>BP</th>
+                                <th>Sugar</th>
+                                <th>Weight</th>
+                                <th id="actionHeader" class="hidden">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vitalsTableBody">
+                            </tbody>
+                    </table>
+                    <div id="noHistoryMsg" class="text-2xl text-gray-light text-center py-8 hidden">
+                        No vitals recorded yet
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="utils.js"></script>
+    <script src="vitals.js"></script>
+</body>
+</html>
